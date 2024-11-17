@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vota por los platos para la próxima semana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            padding: 10px;
+            background-color: #ff9e1b;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex; 
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .btn-back {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 7px 10px; 
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; 
+        }
+
+        .title-container {
+            flex-grow: 1; 
+            text-align: center; 
+        }
+
+        .nav-logo {
+            display: flex;
+            justify-content: center; 
+            margin: 60px 0 20px;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center; 
+        }
+
+        form div {
+            margin-bottom: 15px; 
+        }
+
+        form input {
+            width: 60%;
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .message {
+            color: green;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .info-text {
+            color: red; /* Color del texto informativo */
+            font-size: 0.9em; /* Tamaño de fuente del texto informativo */
+            margin-top: 20px; /* Espaciado superior */
+            text-align: center; /* Centrar el texto */
+        }
+
+        .btn {
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block; 
+            margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                width: 90%; 
+            }
+        }
+
+        .title {
+            color: #ffffff;
+            margin: 0; /* Quitar margen para un mejor ajuste */
+            font-size: 1.5em;
+            text-align: center; 
+        }
+        
+        main {
+            margin-top: 60px; /* Asegurar que no quede cubierto por la barra superior */
+        }
+
+        footer {
+            text-align: center; /* Centrar el texto del footer */
+            padding: 10px 0; /* Espaciado alrededor del footer */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a href="{% url 'iniciada' %}" class="btn btn-back">Regresar</a>
+        <div class="title-container">
+            <h1 class="title">Vota por los platos que quieras</h1>
+        </div>
+    </div>
+
+    <div class="nav-logo">
+        <img src="/media/platos/logo2.png" alt="Logo" style="max-width: 300px;">
+    </div>
+
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Delicias Caseras</p>
+    </footer>
+</body>
+</html>
