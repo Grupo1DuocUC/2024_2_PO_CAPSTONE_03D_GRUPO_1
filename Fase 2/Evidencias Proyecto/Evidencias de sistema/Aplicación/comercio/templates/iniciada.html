@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+
+{% block conten %}
+<style>
+    body {
+        background-color: #EAEAEA;
+        font-family: Arial, sans-serif;
+        margin: 0;
+    }
+    .container {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 600px;
+        margin: 20px auto;
+        text-align: center;
+    }
+    h1 {
+        color: #333;
+        margin: 0;
+    }
+    .big-text {
+        font-size: 2.5em;
+    }
+
+    .nav-logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .nav-logo img {
+        max-width: 350px;
+        transition: transform 0.3s ease;
+    }
+
+    .nav-logo img:hover {
+        transform: scale(1.1);
+    }
+
+    .link-cancel {
+        color: #007BFF;
+        text-decoration: none;
+        margin-top: 10px;
+        display: inline-block;
+        transition: text-decoration 0.3s;
+    }
+    .link-cancel:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="nav-logo">
+    <img src="/media/platos/logo2.png" alt="Logo">
+</div>
+
+<div class="container">
+    <h1><span class="big-text">Hola, {{ user }}.</span></h1>
+</div>
+{% endblock %}
