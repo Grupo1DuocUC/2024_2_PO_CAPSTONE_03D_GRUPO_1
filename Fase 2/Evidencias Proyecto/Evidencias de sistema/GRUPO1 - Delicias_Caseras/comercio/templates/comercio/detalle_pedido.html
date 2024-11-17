@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Pedido #{{ pedido.id }}</title>
+</head>
+<body>
+    <h1>Detalle del Pedido #{{ pedido.id }}</h1>
+    <p><strong>Dirección de Envío:</strong> {{ pedido.direccion_envio }}</p>
+    <p><strong>Hora de Entrega:</strong> {{ pedido.hora_entrega }}</p>
+    <p><strong>Estado:</strong> {{ pedido.estado }}</p>
+    <p><strong>Fecha del Pedido:</strong> {{ pedido.fecha_pedido }}</p>
+    <h2>Detalles:</h2>
+    <ul>
+        {% for detalle in pedido.detalles.all %}
+        <li>{{ detalle.cantidad }} x {{ detalle.plato.nombre }} - ${{ detalle.subtotal }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'pagina_venta' %}">Volver a la venta</a>
+</body>
+</html>

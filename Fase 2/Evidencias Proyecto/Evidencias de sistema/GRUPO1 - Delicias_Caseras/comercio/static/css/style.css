@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+body {
+    background-color: #EAEAEA;
+    font-family: Arial, sans-serif;
+    margin: 0; /* Eliminar márgenes predeterminados del body */
+}
+/*Otro código para testear*/
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto; /* Espacio entre el contenedor y el borde superior */
+    text-align: center;
+}
+h1 {
+    color: #333;
+    margin: 0; /* Eliminar margen superior del h1 */
+}
+.link-cancel {
+    color: #007BFF;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    transition: text-decoration 0.3s;
+}
+.link-cancel:hover {
+    text-decoration: underline;
+}
+
+/*Fin codigo testear*/
+.login-box{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 440px;
+    height: 480px;
+    padding: 30px;
+}
+.login-header{
+    text-align: center;
+    margin: 20px 0 40px 0;
+}
+.login-header header{
+    color: #333;
+    font-size: 30px;
+    font-weight: 600;
+}
+.input-box .input-field{
+    width: 100%;
+    height: 60px;
+    font-size: 17px;
+    padding: 0 25px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0px 5px 10px 1px rgba(0,0,0, 0.05);
+    outline: none;
+    transition: .3s;
+}
+::placeholder{
+    font-weight: 500;
+    color: #222;
+}
+.input-field:focus{
+    width: 105%;
+}
+.forgot{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+section{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+#check{
+    margin-right: 10px;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+section a{
+    color: #555;
+}
+.input-submit{
+    position: relative;
+}
+.submit-btn{
+    width: 100%;
+    height: 60px;
+    background: #222;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+.input-submit label{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    color: #fff;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+.submit-btn:hover{
+    background: #000;
+    transform: scale(1.05,1);
+}
+.sign-up-link{
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+.sign-up-link a{
+    color: #000;
+    font-weight: 600;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff9e1b; /* Color de fondo */
+    color: white; /* Color del texto */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.btn:hover {
+    background-color: #cf7d13; /* Color de fondo al pasar el ratón */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the buttons horizontally */
+}
+
+.button {
+  margin: 10px; /* Add some space between buttons */
+  padding: 15px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.green { background-color: #4CAF50; color: white; }
+.blue { background-color: #2196F3; color: white; }
+.red { background-color: #f44336; color: white; }
+.yellow { background-color: #ffeb3b; color: black; } 
+.gray { background-color: #9E9E9E; color: white; }
+.purple { background-color: #9C27B0; color: white; }
+
+/* más botones de prueba */
+
+/**/
+/**/
+.button-container {
+display: flex;
+flex-direction: column;
+align-items: center; /* Center the buttons horizontally */
+}
+
+.button {
+margin: 10px; /* Add some space between buttons */
+padding: 15px 30px;
+font-size: 16px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.green { background-color: #4CAF50; color: white; }
+.blue { background-color: #2196F3; color: white; }
+.red { background-color: #f44336; color: white; }
+.yellow { background-color: #ffeb3b; color: black; } 
+.gray { background-color: #9E9E9E; color: white; }
+.purple { background-color: #9C27B0; color: white; }

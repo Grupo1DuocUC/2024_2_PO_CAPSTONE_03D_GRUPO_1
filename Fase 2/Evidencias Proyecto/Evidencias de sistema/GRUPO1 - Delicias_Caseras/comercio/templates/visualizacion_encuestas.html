@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización de Encuestas</title>
+    <style>
+        body {
+            background-color: #EAEAEA;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ff9e1b;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            margin: 0;
+        }
+        .btn-primary {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #ff6f00;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #e65c00;
+        }
+
+        .plato-list {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+        }
+
+        .plato-item {
+            flex: 0 0 300px;
+            box-sizing: border-box;
+            margin: 10px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        .plato-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{% url 'iniciada' %}" class="btn-primary">Volver</a>
+        <h1>Encuestas Realizadas</h1>
+    </header>
+    <div class="plato-list">
+        {% for resultado in resultados %}
+            <div class="plato-item">
+                <h2>{{ resultado.plato.nombre }}</h2>
+                <img src="{{ resultado.plato.imagen.url }}" alt="{{ resultado.plato.nombre }}">
+                <p>Puntuación Total ⭐: {{ resultado.total_rating }}</p>
+                <p>Promedio de Calificación ⭐: {{ resultado.promedio_rating|floatformat:1 }}</p>
+                <p>Cantidad de Votos: {{ resultado.cantidad_encuestas }}</p>
+            </div>
+        {% empty %}
+            <p>No hay encuestas disponibles.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

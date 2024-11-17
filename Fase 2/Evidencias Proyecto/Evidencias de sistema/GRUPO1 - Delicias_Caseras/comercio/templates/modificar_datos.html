@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Datos</title>
+    <style>
+        body {
+            background-image: url('/media/platos/modificardatos.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        .header {
+            padding: 3px;
+            background-color: rgba(255, 158, 27, 0.8);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 10px;
+        }
+
+        .btn-back {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 7px 10px; 
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; 
+        }
+
+        .title-container {
+            flex-grow: 1; 
+            text-align: center; 
+        }
+
+        .nav-logo {
+            display: flex;
+            justify-content: center; 
+            margin-bottom: 20px; 
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center; 
+        }
+
+        form div {
+            margin-bottom: 15px; 
+        }
+
+        form input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .message {
+            color: green;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .info-text {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn {
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block; 
+            margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                width: 90%; 
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start; 
+            }
+        }
+
+        .title {
+            color: #ffffff;
+            margin: 10px 0;
+            font-size: 1.5em;
+            text-align: center; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <a href="{% url 'iniciada' %}" class="btn btn-back">Regresar</a>
+    <div class="title-container">
+        <h1 class="title">Modificar Datos</h1>
+    </div>
+</div>
+
+<div class="nav-logo">
+    <img src="/media/platos/logo2.png" alt="Logo" style="max-width: 300px; width: 100%; height: auto;">
+</div>
+
+<div class="form-container">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    
+    <form action="/modificar_datos/" method="POST">
+        {% csrf_token %}
+        
+        <div>
+            <input type="text" name="username" placeholder="Nombre de usuario" required value="{{ user.username }}">
+            {% if form.username.errors %}
+                <div class="error">{{ form.username.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div>
+            <input type="email" name="email" placeholder="Correo" required value="{{ user.email }}">
+            {% if form.email.errors %}
+                <div class="error">{{ form.email.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div>
+            <input type="password" name="password" placeholder="Nueva contraseña">
+            {% if form.password.errors %}
+                <div class="error">{{ form.password.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <button class="btn btn-success" style="background-color: #28a745; color: white;">
+            Guardar Cambios
+        </button>
+    </form>
+    
+    <div class="info-text">
+        Para que los cambios tengan efecto, se te redireccionará a la página de inicio de sesión, en la cual deberás iniciar sesión con tus nuevos datos.
+    </div>
+</div>
+
+</body>
+</html>

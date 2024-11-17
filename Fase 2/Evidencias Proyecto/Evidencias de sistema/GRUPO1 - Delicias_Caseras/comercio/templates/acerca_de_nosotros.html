@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de Nosotros - Delicias Caseras</title>
+    <style>
+        body {
+            background-image: url('/media/platos/manteles.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: rgba(255, 158, 27, 0.8);
+            padding: 15px;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        .btn-volver {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 20px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-volver:hover {
+            background-color: #45a049;
+        }
+        h1 {
+            color: #333;
+            flex: 1;
+            text-align: center;
+            margin: 0;
+        }
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+            width: 90%;
+        }
+        p {
+            line-height: 1.6;
+            color: #555;
+        }
+        .contact-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .contact-info h2 {
+            margin-top: 0;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .footer-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'iniciar_sesion' %}" class="btn-volver">Volver</a>
+        <h1>Acerca de Nosotros</h1>
+    </div>
+
+    <div class="content">
+        <p>Somos una pyme familiar la cual nos dedicamos desde el año 2014 a la venta de almuerzos. Nuestro sello es ofrecer siempre platos caseros, frescos y a un precio atractivo.</p>
+        <p>A lo largo de nuestros años en el rubro siempre hemos recibido buenas críticas de nuestros clientes, conservando incluso muchos de ellos desde la fecha en la que iniciamos.</p>
+        
+        <p>Actualmente pretendemos expandirnos a más clientes, por lo que esta página nos ayudará para nuestro objetivo y al mismo tiempo te facilitará a ti como cliente la compra de nuestros almuerzos, y te permitirá ver nuestras deliciosas ofertas diarias.</p>
+        
+        <p>Sinceramente, el equipo de Delicias Caseras.</p>
+
+        <p>Puedes comprar nuestros deliciosos almuerzos todos los días de 12:00hrs. a 15:00hrs.</p>
+        
+        <div class="contact-info">
+            <h2>Contactos:</h2>
+            <p>Pedidos por teléfono: +569 87654321</p>
+            <p>Opiniones: <a href="mailto:opiniones@deliciascaseras.cl">opiniones@deliciascaseras.cl</a></p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Delicias Caseras. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

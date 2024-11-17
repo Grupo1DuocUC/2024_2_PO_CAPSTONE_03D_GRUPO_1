@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Pedidos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #e0f7fa, #80deea);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #2980b9;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            user-select: none;
+            padding: 10px 15px;
+            background-color: #28a745;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            border: none;
+            box-shadow: none;
+            outline: none;
+        }
+        .navbar a:hover {
+            background-color: #218838;
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #e7e9eb;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+        li a {
+            text-decoration: none;
+            color: #2980b9;
+        }
+        li a:hover {
+            text-decoration: underline;
+        }
+        .no-pedidos {
+            text-align: center;
+            color: #888;
+        }
+        .back-button {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .back-button a {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #2980b9;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .back-button a:hover {
+            background-color: #1a5f8a;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'iniciada' %}">Volver</a>
+    </nav>
+
+    <div class="container">
+        <h1>Mis Pedidos</h1>
+        {% if pedidos %}
+            <ul>
+                {% for pedido in pedidos|dictsortreversed:"id" %}
+                    <li>
+                        <a href="{% url 'ver_detalle_pedido' pedido.id %}">
+                            Pedido #{{ pedido.id }} - Fecha: {{pedido.fecha_pedido}} - Estado: {{ pedido.estado }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-pedidos">No tienes pedidos registrados.</p>
+        {% endif %}
+    </div>
+    
+    <div class="back-button">
+        <a href="{% url 'iniciada' %}">Volver a la página principal</a>
+    </div>
+</body>
+</html>
