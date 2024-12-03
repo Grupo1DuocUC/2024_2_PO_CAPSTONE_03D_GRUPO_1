@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Pedido #{{ pedido.id }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h2 {
+            color: #34495e;
+        }
+        .pedido-info {
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .detalles {
+            list-style-type: none;
+            padding: 0;
+        }
+        .detalles li {
+            background: #e7e9eb;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 15px;
+        }
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #2980b9;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #1a5f8a;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <h1>Detalle del Pedido #{{ pedido.id }}</h1>
+    <div class="pedido-info">
+        <p><strong>Dirección de Envío:</strong> {{ pedido.direccion_envio }}</p>
+        <p><strong>Hora de Entrega:</strong> {{ pedido.hora_entrega }}</p>
+        <p><strong>Estado:</strong> {{ pedido.estado }}</p>
+        <p><strong>Fecha del Pedido:</strong> {{ pedido.fecha_pedido }}</p>
+    </div>
+    
+    <h2>Detalles:</h2>
+    <ul class="detalles">
+        {% for detalle in detalles %}
+        <li>{{ detalle.cantidad }} x {{ detalle.plato.nombre }} - Subtotal: ${{ detalle.subtotal }}</li>
+        {% endfor %}
+    </ul>
+
+    <p class="total"><strong>Total de la Compra:</strong> ${{ total_compra }}</p>
+
+    <div class="links">
+        <a class="btn" href="{% url 'iniciada' %}">Volver a la página principal</a>
+        <a class="btn" href="{% url 'mis_pedidos' %}">Ir al historial de pedidos</a>
+        <button class="btn" onclick="imprimirPDF()">Imprimir Pedido en PDF</button>
+    </div>
+
+    <script>
+        async function imprimirPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const centerX = pageWidth / 2;
+
+            doc.setFontSize(16);
+            doc.text('******* Delicias Caseras *******', centerX, 30, { align: 'center' });
+
+            doc.setFontSize(22);
+            doc.text('Detalle del Pedido #' + {{ pedido.id }}, 10, 40);
+
+            doc.setFontSize(16);
+            doc.text('Dirección de Envío: ' + '{{ pedido.direccion_envio }}', 10, 60);
+            doc.text('Hora de Entrega: ' + '{{ pedido.hora_entrega }}', 10, 70);
+            doc.text('Fecha del Pedido: ' + '{{ pedido.fecha_pedido }}', 10, 80);
+
+            doc.setFontSize(18);
+            doc.text('Detalles:', 10, 100);
+            doc.setFontSize(14);
+            let y = 110;
+            {% for detalle in detalles %}
+                doc.text('{{ detalle.cantidad }} x {{ detalle.plato.nombre }} - Subtotal: ${{ detalle.subtotal }}', 10, y);
+                y += 10;
+            {% endfor %}
+            
+            doc.setFontSize(16);
+            doc.text('Total de la Compra: ${{ total_compra }}', 10, y);
+
+            doc.text('******* Delicias Caseras *******', centerX, y + 10, { align: 'center' });
+
+            doc.save('pedido_{{ pedido.id }}.pdf');
+        }
+    </script>
+</body>
+</html>
